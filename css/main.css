@@ -1,0 +1,42 @@
+.wrapper {
+	position: relative;
+}
+
+.side-panel {
+	width: 300px;
+	padding: 10px;
+	float: left;
+}
+
+.slider-container {
+	margin: 15px;
+}
+
+.slider-label {
+	margin-left: -8px;
+	font-weight: 500;
+}
+
+
+.main-container {
+	margin: 20px;
+}
+
+.ellipsis {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.img {
+	height: 200px!important;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.caption {
+	text-align: center;
+}

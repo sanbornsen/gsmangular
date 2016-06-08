@@ -1,0 +1,158 @@
+<html ng-app="gsmarena">
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    	<meta name="apple-mobile-web-app-capable" content="yes" />
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <title>Gsmarena phone filter</title>
+	    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	    <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css">
+	    <link rel="stylesheet" href="css/main.css">
+	</head>
+	<body ng-controller="contentController" class="main-container">
+		<div class="page-header">
+  			<h1>Device Filter  <small>Roder interview</small></h1>
+		</div>
+
+		<div class="row">
+			<div class="jumbotron col-sm-3">
+				<div class="slider-container">
+					<span class="slider-label"> Camera : </span>
+					<slider slider-id="sliderOptions.sliderId"
+			            ng-model="model.camera"
+			            value="value.camera"
+			            on-stop-slide="slideDelegate(value, $event)"
+			            min="sliderOptions.min"
+			            max="sliderOptions.max"
+			            step="sliderOptions.step"
+			            range="sliderOptions.range"
+			            precision="{{ sliderOptions.precision }}"
+			            reversed="{{ sliderOptions.reversed }}"
+			            orientation="{{ sliderOptions.orientation }}"
+			            handle="{{ sliderOptions.handle }}"
+			            enabled="{{ sliderOptions.enabled }}"
+			            ng-disabled="sliderOptions.ngDisabled"
+			            naturalarrowkeys="{{ sliderOptions.naturalarrowkeys }}"
+			            >
+			    	</slider>
+			    </div>
+			    <div class="slider-container">
+			    	<span class="slider-label"> Memory : </span>
+					<slider slider-id="sliderOptions.sliderId"
+			            ng-model="model.memory"
+			            value="value.memory"
+			            on-stop-slide="slideDelegate(value, $event)"
+			            min="sliderOptions.min"
+			            max="sliderOptions.max"
+			            step="sliderOptions.step"
+			            range="sliderOptions.range"
+			            precision="{{ sliderOptions.precision }}"
+			            reversed="{{ sliderOptions.reversed }}"
+			            orientation="{{ sliderOptions.orientation }}"
+			            handle="{{ sliderOptions.handle }}"
+			            enabled="{{ sliderOptions.enabled }}"
+			            ng-disabled="sliderOptions.ngDisabled"
+			            naturalarrowkeys="{{ sliderOptions.naturalarrowkeys }}"
+			            >
+			    	</slider>
+			    </div>
+			    <div class="slider-container">
+			    	<span class="slider-label"> Ram : </span>
+					<slider slider-id="sliderOptions.sliderId"
+			            ng-model="model.ram"
+			            value="value.ram"
+			            on-stop-slide="slideDelegate(value, $event)"
+			            min="sliderOptions.min"
+			            max="sliderOptions.max"
+			            step="sliderOptions.step"
+			            range="sliderOptions.range"
+			            precision="{{ sliderOptions.precision }}"
+			            reversed="{{ sliderOptions.reversed }}"
+			            orientation="{{ sliderOptions.orientation }}"
+			            handle="{{ sliderOptions.handle }}"
+			            enabled="{{ sliderOptions.enabled }}"
+			            ng-disabled="sliderOptions.ngDisabled"
+			            naturalarrowkeys="{{ sliderOptions.naturalarrowkeys }}"
+			            >
+			    	</slider>
+			    </div>
+			    <div class="slider-container">
+			    	<span class="slider-label"> Battery : </span>
+					<slider slider-id="sliderOptions.sliderId"
+			            ng-model="model.bat"
+			            value="value.bat"
+			            on-stop-slide="slideDelegate(value, $event)"
+			            min="sliderOptions.min"
+			            max="sliderOptions.max"
+			            step="sliderOptions.step"
+			            range="sliderOptions.range"
+			            precision="{{ sliderOptions.precision }}"
+			            reversed="{{ sliderOptions.reversed }}"
+			            orientation="{{ sliderOptions.orientation }}"
+			            handle="{{ sliderOptions.handle }}"
+			            enabled="{{ sliderOptions.enabled }}"
+			            ng-disabled="sliderOptions.ngDisabled"
+			            naturalarrowkeys="{{ sliderOptions.naturalarrowkeys }}"
+			            >
+			    	</slider>
+			    </div>
+			    <div class="slider-container">
+			    	<span class="slider-label"> Max Price :
+			    		<small>
+			    			{{model.price | currency : 'EUR ' : 2}}
+			    		</small>
+			    	</span>
+					<slider slider-id="priceOptions.sliderId"
+						ng-model="model.price"
+			            value="value.price"
+			            on-stop-slide="priceSlideDelegate(value, $event)"
+			            min="priceOptions.min"
+			            max="priceOptions.max"
+			            step="priceOptions.step"
+			            range="sliderOptions.range"
+			            precision="{{ sliderOptions.precision }}"
+			            reversed="{{ sliderOptions.reversed }}"
+			            orientation="{{ sliderOptions.orientation }}"
+			            handle="{{ sliderOptions.handle }}"
+			            enabled="{{ sliderOptions.enabled }}"
+			            ng-disabled="sliderOptions.ngDisabled"
+			            naturalarrowkeys="{{ sliderOptions.naturalarrowkeys }}"
+			            >
+			    	</slider>
+			    </div>
+			</div>
+
+			<div class="col-sm-9">
+				<div class="row">
+
+				  <div class="col-sm-5 col-md-4 col-lg-3" ng-repeat="item in items">
+				  	<a href="{{item.url}}" target="_blank">
+					    <div class="thumbnail">
+					      <img class="img" src="{{item.imageUrl}}" alt="{{item.name}}">
+					      <div class="caption">
+					        <h4 class="ellipsis">{{item.name}}</h4>
+					        <p>{{item.ram | toMemory}} Ram | {{item.memory | toMemory}} Storage</p>
+					        <p>{{item.camera}} MP Camera | {{item.battery}} mAh Battery</p>
+					      </div>
+					    </div>
+					</a>
+				  </div>
+
+				</div>
+			</div>
+		</div>
+
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.js"></script><!-- angular-slider include -->
+
+		<!-- angular-slider include -->
+		<script src="js/slider.js"></script>
+
+		<!-- test file include -->
+		<script src="js/config.js"></script>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>
