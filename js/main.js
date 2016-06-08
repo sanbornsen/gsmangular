@@ -23,6 +23,7 @@ angular.module('gsmarena', ['ui.bootstrap-slider'])
             max: 1000,
             step: 10,
             precision: 2,
+            ngDisabled: false,
         };
 
         $scope.range = true;
@@ -43,9 +44,22 @@ angular.module('gsmarena', ['ui.bootstrap-slider'])
             price: $scope.sliderOptions.min + $scope.sliderOptions.step,
         };
 
+        $scope.warning = "";
+
         $scope.delegateEvent = null;
         $scope.slideDelegate = function (value, event) {
             $scope.items = [];
+            if (($scope.model.camera +
+                $scope.model.ram +
+                $scope.model.memory +
+                $scope.model.bat) > MAX_TOTAL_VALUE_TO_SELECT) {
+                $scope.priceOptions.ngDisabled = true;
+                $scope.warning = "Total of all the values should not exceed 28!";
+            } else {
+                $scope.priceOptions.ngDisabled = false;
+                $scope.warning = "";
+            }
+
         };
 
         $scope.priceSlideDelegate = function(value) {
@@ -58,9 +72,11 @@ angular.module('gsmarena', ['ui.bootstrap-slider'])
 
             $scope.items = [];
             $scope.sliderOptions.ngDisabled = true;
+            $scope.priceOptions.ngDisabled = true;
             $http.get(BASE_URL+"search/?"+queryStr)
             .success(function(response) {
                 $scope.sliderOptions.ngDisabled = false;
+                $scope.priceOptions.ngDisabled = false;
                 $log.log(response);
                 $scope.items = response;
             })

@@ -115,11 +115,14 @@
 			            orientation="{{ sliderOptions.orientation }}"
 			            handle="{{ sliderOptions.handle }}"
 			            enabled="{{ sliderOptions.enabled }}"
-			            ng-disabled="sliderOptions.ngDisabled"
+			            ng-disabled="priceOptions.ngDisabled"
 			            naturalarrowkeys="{{ sliderOptions.naturalarrowkeys }}"
 			            >
 			    	</slider>
 			    </div>
+			    <div class="alert alert-warning" ng-if="warning != ''">
+			    	{{warning}}
+				</div>
 			</div>
 
 			<div class="col-sm-9">
