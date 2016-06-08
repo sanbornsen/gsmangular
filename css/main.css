@@ -40,3 +40,7 @@ a {
 .caption {
 	text-align: center;
 }
+
+.price-text {
+	font-weight: 500
+}
