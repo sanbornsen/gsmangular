@@ -49,6 +49,7 @@ angular.module('gsmarena', ['ui.bootstrap-slider'])
         $scope.delegateEvent = null;
         $scope.slideDelegate = function (value, event) {
             $scope.items = [];
+            $scope.model.price = 0;
             if (($scope.model.camera +
                 $scope.model.ram +
                 $scope.model.memory +
