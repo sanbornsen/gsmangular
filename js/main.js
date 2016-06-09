@@ -27,6 +27,7 @@ angular.module('gsmarena', ['ui.bootstrap-slider'])
         };
 
         $scope.range = true;
+        $scope.priceClass = "";
 
         $scope.model = {
             camera: 0,
@@ -72,16 +73,25 @@ angular.module('gsmarena', ['ui.bootstrap-slider'])
             queryStr += "&price="+$scope.model.price;
 
             $scope.items = [];
+            $scope.warning = "Loading...";
             $scope.sliderOptions.ngDisabled = true;
             $scope.priceOptions.ngDisabled = true;
             $http.get(BASE_URL+"search/?"+queryStr)
             .success(function(response) {
+                $scope.warning = "";
                 $scope.sliderOptions.ngDisabled = false;
                 $scope.priceOptions.ngDisabled = false;
                 $log.log(response);
                 $scope.items = response;
             })
-        }
+        };
+
+        $scope.itemMouseOver = function() {
+             this.priceClass = "price-text";
+        };
+        $scope.itemMouseLeave = function() {
+             this.priceClass = "";
+        };
 
     }])
     // Custom filter written for storage number
